@@ -17,22 +17,8 @@ server.post('/get-movie-details', function (req, res) {
     let movieToSearch = req.body.result && req.body.result.parameters && req.body.result.parameters.movie ? req.body.result.parameters.movie : 'Blade Runner';
     let reqUrl = encodeURI('https://www.omdbapi.com/?apikey='+ apiKey +'&t=' + movieToSearch);
 
-    /*
-    request(reqUrl, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-         res.json(body);
-      } else {
-        return res.json({
-          speech: 'Something went wrong!',
-          displayText: 'Something went wrong!',
-          source: 'get-movie-details'
-        });
-      }
-    })
-    */
 
     request(reqUrl, function(error, response, body) {
-
 
       var movie = JSON.parse(body);
 
@@ -61,25 +47,6 @@ server.post('/get-movie-details', function (req, res) {
     }
       //res.send(movie);
     });
-
-    /*
-    request
-    .get('https://www.omdbapi.com/?apikey=6309d892&t=gojira')
-    .on('response', function(response) {
-      console.log(response.statusCode) // 200
-      console.log(response.headers['content-type']) // 'image/png'
-    })
-    */
-
-    /*
-    request('https://jsonplaceholder.typicode.com/users', function(error, response, body) {
-      var jsonBody = JSON.parse(body);
-      var first = jsonBody[0];
-      res.send(first);
-    });
-    */
-
-
 
 });
 
