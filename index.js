@@ -11,6 +11,7 @@ const omdbApiKey = '6309d892';
 app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
 
 app.post('/get-movie-details', function (req, res) {
 
